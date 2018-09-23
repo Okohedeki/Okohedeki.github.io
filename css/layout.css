@@ -325,36 +325,63 @@ ul#nav li.current a { color: #F06000; }
    border-radius: 3px 0 0 3px;
 }
 
-.photoshop {
+.Python {
   	width: 80%;
-  	-moz-animation: photoshop 2s ease;
-  	-webkit-animation: photoshop 2s ease;
+  	-moz-animation: Python 2s ease;
+  	-webkit-animation: Python 2s ease;
 }
-.illustrator {
-  	width: 75%;
-  	-moz-animation: illustrator 2s ease;
-  	-webkit-animation: illustrator 2s ease;
+.HTML/CSS {
+  	width: 45%;
+  	-moz-animation: HTML/CSS 2s ease;
+  	-webkit-animation: HTML/CSS 2s ease;
 }
-.wordpress {
+.Linux  {
   	width: 65%;
-  	-moz-animation: wordpress 2s ease;
-  	-webkit-animation: wordpress 2s ease;
+  	-moz-animation: Linux  2s ease;
+  	-webkit-animation: Linux  2s ease;
 }
-.css {
-  	width: 70%;
-  	-moz-animation: css 2s ease;
-  	-webkit-animation: css 2s ease;
+.Matlab  {
+  	width: 45%;
+  	-moz-animation: Matlab  2s ease;
+  	-webkit-animation: Matlab  2s ease;
 }
-.html5 {
-  	width: 70%;
-  	-moz-animation: html5 2s ease;
-  	-webkit-animation: html5 2s ease;
+.R  {
+  	width: 55%;
+  	-moz-animation: R 2s ease;
+  	-webkit-animation: R 2s ease;
 }
-.jquery {
+.SAS  {
   	width: 80%;
-  	-moz-animation: jquery 2s ease;
-  	-webkit-animation: jquery 2s ease;
+  	-moz-animation: SAS 2s ease;
+  	-webkit-animation: SAS 2s ease;
 }
+
+.MySQL   {
+  	width: 70%;
+  	-moz-animation: MySQL 2s ease;
+  	-webkit-animation: MySQL 2s ease;
+}
+
+.ProtegeSQL    {
+  	width: 70%;
+  	-moz-animation: ProtegeSQL 2s ease;
+  	-webkit-animation: ProtegeSQL 2s ease;
+}
+
+.DBMS    {
+  	width: 70%;
+  	-moz-animation: DBMS 2s ease;
+  	-webkit-animation: DBMS 2s ease;
+}
+
+.Excel    {
+  	width: 90%;
+  	-moz-animation: Excel 2s ease;
+  	-webkit-animation: Excel 2s ease;
+}
+
+
+
 
 @-moz-keyframes photoshop {
   0%   { width: 0px;  }
