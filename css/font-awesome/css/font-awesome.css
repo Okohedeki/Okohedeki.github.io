@@ -1213,6 +1213,10 @@
 }
 .fa-dropbox:before {
   content: "\f16b";
+
+}
+.fa-quora:before {
+  content: "\f2c4";
 }
 .fa-stack-overflow:before {
   content: "\f16c";
