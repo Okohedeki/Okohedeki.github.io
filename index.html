@@ -3,127 +3,137 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A private, read-only Google Ads Research MCP for keyword planning across advertising accounts owned or managed by Okohedeki.">
-  <title>Google Ads Research MCP — Okohedeki</title>
+  <meta name="description" content="A private developer console for read-only Google Ads keyword research.">
+  <title>Google Ads Research Console — Okohedeki</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <a class="skip-link" href="#main-content">Skip to content</a>
-  <header class="site-header">
-    <a class="wordmark" href="index.html" aria-label="Okohedeki home"><span aria-hidden="true">O</span><strong>OKOHEDEKI</strong></a>
-    <nav aria-label="Primary navigation">
-      <a href="#protocol">MCP architecture</a>
-      <a href="#tools">Tools</a>
-      <a href="#data-use">Data use</a>
-      <a href="privacy.html">Privacy</a>
-    </nav>
+<body class="app-body">
+  <a class="skip-link" href="#workspace">Skip to workspace</a>
+
+  <header class="app-header">
+    <a class="app-brand" href="index.html" aria-label="Google Ads Research Console home">
+      <span class="brand-mark" aria-hidden="true">M</span>
+      <span><strong>Google Ads Research</strong><small>MCP CONSOLE</small></span>
+    </a>
+    <div class="header-context" aria-label="Environment status">
+      <span class="environment"><i aria-hidden="true"></i> Demo environment</span>
+      <span class="header-divider" aria-hidden="true"></span>
+      <button class="account-menu" type="button" aria-label="Current operator account"><span>Okohedeki</span><b aria-hidden="true">⌄</b></button>
+    </div>
   </header>
 
-  <main id="main-content">
-    <section class="hero mcp-hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="eyebrow"><span aria-hidden="true"></span> Private MCP server · In development</p>
-        <h1 id="hero-title">A read-only Google Ads MCP for keyword research.</h1>
-        <p class="hero-lede">The server gives an authorized MCP client a narrow toolset for retrieving keyword ideas, historical search metrics, competition, bid ranges, and forecasts from advertising accounts I own or manage.</p>
-        <div class="hero-actions">
-          <a class="button" href="#protocol">Inspect the architecture <span aria-hidden="true">↓</span></a>
-          <a class="text-link" href="privacy.html">Read the privacy policy <span aria-hidden="true">→</span></a>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Developer console navigation">
+      <nav>
+        <p>Workspace</p>
+        <a class="nav-item is-active" href="#workspace" aria-current="page"><span aria-hidden="true">⌕</span>Keyword ideas</a>
+        <a class="nav-item" href="#metrics"><span aria-hidden="true">▥</span>Historical metrics</a>
+        <a class="nav-item" href="#forecast"><span aria-hidden="true">⌁</span>Forecast</a>
+        <a class="nav-item" href="#accounts"><span aria-hidden="true">◎</span>Authorized accounts</a>
+        <p>Developer</p>
+        <a class="nav-item" href="#request"><span aria-hidden="true">&lt;&gt;</span>Request inspector</a>
+        <a class="nav-item" href="#activity"><span aria-hidden="true">≡</span>Activity log</a>
+      </nav>
+      <div class="server-card">
+        <div><i aria-hidden="true"></i><strong>Server connected</strong></div>
+        <code>google-ads-research-mcp</code>
+        <small>v0.1.0 · stdio</small>
+      </div>
+      <div class="sidebar-links"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
+    </aside>
+
+    <main class="workspace" id="workspace">
+      <section class="workspace-header">
+        <div>
+          <p class="breadcrumb">Tools&nbsp; / &nbsp;<code>generate_keyword_ideas</code></p>
+          <h1>Keyword ideas</h1>
+          <p>Retrieve keyword suggestions and planning metrics for an authorized advertising account.</p>
         </div>
-        <ul class="trust-line" aria-label="MCP boundaries">
-          <li>Operator-only</li>
-          <li>Private MCP access</li>
-          <li>No mutation tools</li>
-        </ul>
+        <span class="readonly-badge"><i aria-hidden="true"></i> Read only</span>
+      </section>
+
+      <section class="query-panel" aria-labelledby="query-title">
+        <div class="panel-heading">
+          <div><h2 id="query-title">Research query</h2><span class="demo-label">DEMO DATA</span></div>
+          <p>Preview only · no live Google Ads API request</p>
+        </div>
+        <form id="research-form">
+          <label class="seed-field">Seed keywords
+            <input id="seed-keywords" name="seed" value="solar panels, home solar installation" autocomplete="off">
+          </label>
+          <label>Customer ID
+            <select name="customer"><option>123-456-7890 · Authorized</option></select>
+          </label>
+          <label>Location
+            <select name="location"><option>United States</option></select>
+          </label>
+          <label>Language
+            <select name="language"><option>English</option></select>
+          </label>
+          <button class="primary-button" type="submit"><span aria-hidden="true">▶</span> Run preview</button>
+        </form>
+      </section>
+
+      <div class="workspace-grid">
+        <section class="results-panel" aria-labelledby="results-title">
+          <div class="results-toolbar">
+            <div><h2 id="results-title">Keyword ideas</h2><span id="result-count">8 results</span></div>
+            <div class="run-state" id="run-state" role="status"><i aria-hidden="true"></i><span>Completed in 842 ms</span></div>
+            <button class="icon-button" type="button" aria-label="Download result table">⇩ <span>Export CSV</span></button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Keyword</th><th>Avg. monthly searches</th><th>Competition</th><th>Top of page bid (low)</th><th>Top of page bid (high)</th><th>3 mo. trend</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>solar panel installation</strong><small>Added idea</small></td><td>33,100</td><td><span class="competition medium">Medium</span></td><td>$4.18</td><td>$13.72</td><td class="trend-up">↗ 18%</td></tr>
+                <tr><td><strong>solar panels for home</strong><small>Added idea</small></td><td>22,200</td><td><span class="competition high">High</span></td><td>$3.82</td><td>$12.44</td><td class="trend-up">↗ 12%</td></tr>
+                <tr><td><strong>home solar system cost</strong><small>Added idea</small></td><td>12,100</td><td><span class="competition high">High</span></td><td>$5.06</td><td>$16.28</td><td class="trend-flat">→ 0%</td></tr>
+                <tr><td><strong>residential solar companies</strong><small>Added idea</small></td><td>8,100</td><td><span class="competition high">High</span></td><td>$6.35</td><td>$20.11</td><td class="trend-up">↗ 9%</td></tr>
+                <tr><td><strong>solar energy installation</strong><small>Added idea</small></td><td>6,600</td><td><span class="competition medium">Medium</span></td><td>$3.47</td><td>$11.02</td><td class="trend-down">↘ 7%</td></tr>
+                <tr><td><strong>cost to install solar panels</strong><small>Added idea</small></td><td>5,400</td><td><span class="competition high">High</span></td><td>$4.91</td><td>$15.67</td><td class="trend-up">↗ 15%</td></tr>
+                <tr><td><strong>best home solar panels</strong><small>Added idea</small></td><td>4,400</td><td><span class="competition medium">Medium</span></td><td>$2.76</td><td>$9.43</td><td class="trend-up">↗ 6%</td></tr>
+                <tr><td><strong>solar panel quote</strong><small>Added idea</small></td><td>3,600</td><td><span class="competition high">High</span></td><td>$7.24</td><td>$22.18</td><td class="trend-up">↗ 21%</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="table-footer"><span>Showing 1–8 of 8</span><span>Sample metrics for interface demonstration only</span></div>
+        </section>
+
+        <aside class="inspector" id="request" aria-labelledby="inspector-title">
+          <div class="inspector-tabs" role="tablist" aria-label="Request inspector views">
+            <button class="is-selected" type="button" role="tab" aria-selected="true">Request</button>
+            <button type="button" role="tab" aria-selected="false">Response</button>
+          </div>
+          <div class="inspector-content">
+            <div class="inspector-title"><div><h2 id="inspector-title">MCP request</h2><span>#req_demo_0284</span></div><button class="copy-button" type="button">Copy</button></div>
+            <pre><code><span class="syntax-muted">{</span>
+  <span class="syntax-key">"tool"</span>: <span class="syntax-string">"generate_keyword_ideas"</span>,
+  <span class="syntax-key">"arguments"</span>: <span class="syntax-muted">{</span>
+    <span class="syntax-key">"customer_id"</span>: <span class="syntax-string">"1234567890"</span>,
+    <span class="syntax-key">"keywords"</span>: <span class="syntax-muted">[</span>
+      <span class="syntax-string">"solar panels"</span>,
+      <span class="syntax-string">"home solar installation"</span>
+    <span class="syntax-muted">]</span>,
+    <span class="syntax-key">"language"</span>: <span class="syntax-string">"en"</span>,
+    <span class="syntax-key">"location_ids"</span>: <span class="syntax-muted">[</span><span class="syntax-number">2840</span><span class="syntax-muted">]</span>,
+    <span class="syntax-key">"network"</span>: <span class="syntax-string">"GOOGLE_SEARCH"</span>
+  <span class="syntax-muted">}</span>
+<span class="syntax-muted">}</span></code></pre>
+            <dl class="request-meta">
+              <div><dt>Authorization</dt><dd><i aria-hidden="true"></i> Allowlisted account</dd></div>
+              <div><dt>Operation</dt><dd>Read only</dd></div>
+              <div><dt>Transport</dt><dd>Private MCP · stdio</dd></div>
+              <div><dt>Result</dt><dd class="success-text">200 · Complete</dd></div>
+            </dl>
+          </div>
+          <div class="inspector-note"><strong>Demo environment</strong><p>Displayed values are sample data. Credentials and developer tokens are never exposed to the MCP client.</p></div>
+        </aside>
       </div>
+    </main>
+  </div>
 
-      <aside class="mcp-console" aria-label="Planned MCP tool registry">
-        <header>
-          <div><span aria-hidden="true"></span><strong>google-ads-research-mcp</strong></div>
-          <em>DESIGN SPEC</em>
-        </header>
-        <div class="registry-heading"><span>Planned tool registry</span><strong>4 TOOLS</strong></div>
-        <ol class="tool-registry">
-          <li><span>01</span><div><code>generate_keyword_ideas</code><p>Seed terms → related keyword suggestions</p></div><strong>READ</strong></li>
-          <li><span>02</span><div><code>get_historical_metrics</code><p>Search volume, competition, and bid ranges</p></div><strong>READ</strong></li>
-          <li><span>03</span><div><code>generate_keyword_forecast</code><p>Prospective plan forecast metrics</p></div><strong>READ</strong></li>
-          <li><span>04</span><div><code>list_authorized_accounts</code><p>Operator-owned or managed account scope</p></div><strong>READ</strong></li>
-        </ol>
-        <dl class="console-contract">
-          <div><dt>Transport</dt><dd>Private MCP connection</dd></div>
-          <div><dt>Authorization</dt><dd>OAuth + account allowlist</dd></div>
-          <div><dt>Campaign writes</dt><dd>Not registered</dd></div>
-          <div><dt>Public endpoint</dt><dd>None</dd></div>
-        </dl>
-      </aside>
-    </section>
-
-    <section class="protocol section" id="protocol" aria-labelledby="protocol-title">
-      <header class="section-heading">
-        <div><p class="eyebrow">Protocol boundary</p><h2 id="protocol-title">The MCP is a controlled research path—not a back door.</h2></div>
-        <p>Credentials remain at the server boundary. The authorized client receives research results, never the developer token or unrestricted Google Ads access.</p>
-      </header>
-
-      <div class="protocol-flow" aria-label="Google Ads MCP request flow">
-        <article><span>01 / CLIENT</span><h3>Authorized MCP client</h3><p>Sends a named research-tool request with explicit parameters.</p><strong>Operator controlled</strong></article>
-        <div class="protocol-arrow" aria-hidden="true">→</div>
-        <article class="is-server"><span>02 / SERVER</span><h3>Private MCP server</h3><p>Validates the tool, parameters, and permitted account before execution.</p><strong>Allowlisted tools</strong></article>
-        <div class="protocol-arrow" aria-hidden="true">→</div>
-        <article><span>03 / AUTH</span><h3>OAuth account boundary</h3><p>Restricts access to advertising accounts I own or manage.</p><strong>Server-side credentials</strong></article>
-        <div class="protocol-arrow" aria-hidden="true">→</div>
-        <article><span>04 / GOOGLE ADS</span><h3>Keyword Planning services</h3><p>Returns keyword ideas, historical metrics, and forecast data.</p><strong>Read-only response</strong></article>
-      </div>
-
-      <div class="contract-grid">
-        <section><span>REQUEST CONTRACT</span><h3>Inputs stay explicit.</h3><ul><li>Seed keywords or URL</li><li>Authorized customer ID</li><li>Language and location</li><li>Date range and network</li></ul></section>
-        <section><span>RESPONSE CONTRACT</span><h3>Outputs stay bounded.</h3><ul><li>Keyword suggestions</li><li>Historical search metrics</li><li>Competition and bid ranges</li><li>Forecast metrics</li></ul></section>
-        <section><span>ENFORCEMENT</span><h3>Writes do not exist.</h3><ul><li>No campaign mutation tools</li><li>No credential passthrough</li><li>No public MCP endpoint</li><li>No third-party users</li></ul></section>
-      </div>
-    </section>
-
-    <section class="capabilities section" id="tools" aria-labelledby="tools-title">
-      <header class="section-heading">
-        <div><p class="eyebrow">MCP tool surface</p><h2 id="tools-title">Four tools. No mutation surface.</h2></div>
-        <p>The server exposes only the operations required for internal keyword research. Tool descriptions and schemas will make account scope and requested metrics visible before every call.</p>
-      </header>
-      <ol class="capability-list tool-capabilities">
-        <li><span>01</span><div><h3><code>generate_keyword_ideas</code></h3><p>Generate related keyword suggestions from seed terms or eligible account context using KeywordPlanIdeaService.</p></div><strong>Discovery</strong></li>
-        <li><span>02</span><div><h3><code>get_historical_metrics</code></h3><p>Retrieve available search-volume trends, competition indicators, and top-of-page bid estimates.</p></div><strong>History</strong></li>
-        <li><span>03</span><div><h3><code>generate_keyword_forecast</code></h3><p>Retrieve forecast metrics for a prospective keyword plan before any manual campaign decision.</p></div><strong>Forecast</strong></li>
-        <li><span>04</span><div><h3><code>list_authorized_accounts</code></h3><p>Resolve the account IDs available to the operator without exposing credentials or granting access.</p></div><strong>Scope</strong></li>
-      </ol>
-    </section>
-
-    <section class="boundary mcp-boundary" aria-labelledby="boundary-title">
-      <div><p class="eyebrow">Safety model</p><h2 id="boundary-title">Useful to the agent. Account control stays human.</h2></div>
-      <div class="boundary-columns">
-        <section><h3><span aria-hidden="true">+</span> The MCP will</h3><ul><li>Validate every requested tool and parameter</li><li>Restrict queries to authorized account IDs</li><li>Return structured research results to the operator</li><li>Keep credentials and developer token server-side</li></ul></section>
-        <section><h3><span aria-hidden="true">−</span> The MCP will not</h3><ul><li>Create or modify campaigns, ads, budgets, or keywords</li><li>Expose a public or third-party MCP endpoint</li><li>Forward OAuth credentials or the developer token</li><li>Turn a recommendation into an advertising action</li></ul></section>
-      </div>
-    </section>
-
-    <section class="data-use section" id="data-use" aria-labelledby="data-use-title">
-      <header class="section-heading">
-        <div><p class="eyebrow">Access and data</p><h2 id="data-use-title">Private by design and narrow by default.</h2></div>
-        <p>The MCP is intended for one operator and only for Google Ads accounts that operator owns or is authorized to manage.</p>
-      </header>
-      <div class="principles">
-        <article><span>AUTH</span><h3>Credentials stay server-side</h3><p>Google OAuth and the developer token will be handled by the MCP server, not returned in model context or tool responses.</p></article>
-        <article><span>SCOPE</span><h3>Accounts are allowlisted</h3><p>Every tool call will require an eligible customer ID and be rejected when the account is outside the operator's authorized scope.</p></article>
-        <article><span>SHARE</span><h3>No external MCP users</h3><p>The server will not be published as a general service or used to provide other people access through the operator's credentials.</p></article>
-      </div>
-      <div class="policy-links"><p>Detailed handling practices and site terms are published separately.</p><div><a href="privacy.html">Privacy policy <span aria-hidden="true">→</span></a><a href="terms.html">Terms of use <span aria-hidden="true">→</span></a></div></div>
-    </section>
-
-    <section class="contact" id="contact" aria-labelledby="contact-title">
-      <div><p class="eyebrow">Operator and contact</p><h2 id="contact-title">Operated by Okohedeki.</h2></div>
-      <div><p>This site documents the intended architecture and Google Ads API use of a private MCP server. Questions can be directed through the operator's public GitHub profile.</p><a class="button button-light" href="https://github.com/Okohedeki" rel="me">Contact on GitHub <span aria-hidden="true">↗</span></a></div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div><strong>OKOHEDEKI</strong><span>Private Google Ads Research MCP</span></div>
-    <nav aria-label="Legal navigation"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="https://developers.google.com/google-ads/api/docs/api-policy/access-levels">Google Ads API documentation ↗</a></nav>
-    <p>Google Ads is a trademark of Google LLC. This site and MCP are not endorsed by or affiliated with Google.</p>
-  </footer>
+  <script src="app.js"></script>
 </body>
 </html>
