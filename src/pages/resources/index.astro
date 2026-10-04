@@ -2,8 +2,6 @@
 import Base from '../../layouts/Base.astro';
 import { resources } from '../../data/resources';
 import { url } from '../../data/site';
-
-const categories = [...new Set(resources.map((r) => r.category))];
 ---
 
 <Base title="Resources" description="Prompts you can paste into Claude Code, from Edeki Okoh's own setup.">
@@ -13,24 +11,19 @@ const categories = [...new Set(resources.map((r) => r.category))];
       prompts from my own setup that you can paste into claude code. each one does one job and explains what it's doing as it goes.
     </p>
 
-    {
-      categories.map((cat) => (
-        <section class="res-group">
-          <h2 class="eyebrow">{cat}</h2>
-          <ul class="res-list">
-            {resources
-              .filter((r) => r.category === cat)
-              .map((r) => (
-                <li>
-                  <a href={url(`resources/${r.slug}`)}>
-                    <span class="res-title">{r.title} →</span>
-                    <span class="res-summary">{r.summary}</span>
-                  </a>
-                </li>
-              ))}
-          </ul>
-        </section>
-      ))
-    }
+    <div class="cards">
+      {
+        resources.map((r) => (
+          <a class="card" href={url(`resources/${r.slug}`)}>
+            <p class="eyebrow">{r.category}</p>
+            <h2>
+              {r.title}
+              <span class="arrow" aria-hidden="true">→</span>
+            </h2>
+            <p>{r.summary}</p>
+          </a>
+        ))
+      }
+    </div>
   </main>
 </Base>

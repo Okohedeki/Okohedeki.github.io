@@ -8,48 +8,49 @@ export function getStaticPaths() {
 }
 
 const { r } = Astro.props as { r: Resource };
-const others = resources.filter((x) => x.slug !== r.slug);
 ---
 
 <Base title={r.title} description={r.summary}>
-  <main class="page">
-    <p class="eyebrow"><a href={url('resources')}>resources</a> / {r.category}</p>
-    <h1>{r.title}</h1>
-    <p class="lede">{r.summary}</p>
+  <main class="page resource">
+    <article>
+      <p class="eyebrow">{r.category}</p>
+      <h1>{r.title}</h1>
+      <p class="lede">{r.summary}</p>
 
-    <div class="prompt">
-      <div class="prompt-bar">
-        <span>prompt · paste into claude code</span>
-        <button type="button" data-copy>copy</button>
+      <div class="prompt">
+        <div class="prompt-bar">
+          <span>prompt · paste into claude code</span>
+          <button class="copy-btn" type="button" data-copy>Copy</button>
+        </div>
+        <pre><code>{r.prompt}</code></pre>
       </div>
-      <pre><code>{r.prompt}</code></pre>
-    </div>
 
-    <section class="detail">
-      <h2>what it does</h2>
-      <ul>{r.does.map((d) => <li>{d}</li>)}</ul>
-    </section>
+      <section class="detail">
+        <h2>What it does</h2>
+        <ul>{r.does.map((d) => <li>{d}</li>)}</ul>
+      </section>
 
-    <section class="detail">
-      <h2>who it's for</h2>
-      <p>{r.forWho}</p>
-      {r.note && <p class="note" set:html={r.note} />}
-    </section>
+      <section class="detail">
+        <h2>Who it's for</h2>
+        <p>{r.forWho}</p>
+        {r.note && <p class="note" set:html={r.note} />}
+      </section>
+    </article>
 
-    {
-      others.length > 0 && (
-        <section class="detail more">
-          <h2>more resources</h2>
-          <ul>
-            {others.map((o) => (
-              <li>
-                <a href={url(`resources/${o.slug}`)}>{o.title}</a>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )
-    }
+    <aside class="aside" aria-label="More resources">
+      <p class="eyebrow">More resources</p>
+      <ul>
+        {
+          resources.map((o) => (
+            <li>
+              <a href={url(`resources/${o.slug}`)} aria-current={o.slug === r.slug ? 'page' : undefined}>
+                {o.title}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </aside>
   </main>
 
   <script>
@@ -59,16 +60,16 @@ const others = resources.filter((x) => x.slug !== r.slug);
         if (!code) return;
         try {
           await navigator.clipboard.writeText(code.textContent ?? '');
-          btn.textContent = 'copied';
+          btn.textContent = 'Copied';
         } catch {
           const range = document.createRange();
           range.selectNodeContents(code);
           const sel = getSelection();
           sel?.removeAllRanges();
           sel?.addRange(range);
-          btn.textContent = 'press ctrl+c';
+          btn.textContent = 'Press Ctrl+C';
         }
-        setTimeout(() => (btn.textContent = 'copy'), 1800);
+        setTimeout(() => (btn.textContent = 'Copy'), 1800);
       });
     });
   </script>

@@ -16,30 +16,25 @@ const fmt = (d: string) => {
       things i've built outside work: agent tooling, audio and video experiments, a few games. newest first.
     </p>
 
-    <ol class="project-list">
+    <div class="cards">
       {
-        projects.map((p) => (
-          <li class="project" id={p.id}>
-            <div class="project-head">
-              <h2>
-                {p.url ? (
-                  <a href={p.url}>
-                    {p.name}
-                    <span class="arrow" aria-hidden="true">↗</span>
-                  </a>
-                ) : (
-                  p.name
-                )}
-              </h2>
-              {p.status && <span class="status">{p.status}</span>}
-              <time datetime={p.date}>{fmt(p.date)}</time>
-            </div>
-            <p>{p.blurb}</p>
-            {p.note && <p class="project-note" set:html={p.note} />}
-            <p class="tags">{p.tags.join(' · ')}</p>
-          </li>
-        ))
+        projects.map((p) => {
+          const Tag = p.url ? 'a' : 'div';
+          return (
+            <Tag class="card" id={p.id} href={p.url}>
+              <div class="card-head">
+                <h2>
+                  {p.name}
+                  {p.url && <span class="arrow" aria-hidden="true">↗</span>}
+                </h2>
+                {p.status && <span class="status">{p.status}</span>}
+                <time datetime={p.date}>{fmt(p.date)}</time>
+              </div>
+              <p>{p.blurb}</p>
+            </Tag>
+          );
+        })
       }
-    </ol>
+    </div>
   </main>
 </Base>

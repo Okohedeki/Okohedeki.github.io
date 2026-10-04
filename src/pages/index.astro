@@ -9,48 +9,6 @@ const withBase = (html: string) =>
 
 <Base bare>
   <main class:list={['home', { 'no-photo': !site.photo }]}>
-    <section class="home-text">
-      <h1 class="name">{site.name}</h1>
-
-      <dl class="lines">
-        {
-          site.lines.map((l) => (
-            <div class="line">
-              <dt>{l.label}</dt>
-              <dd set:html={withBase(l.html)} />
-            </div>
-          ))
-        }
-        {
-          site.currently && (
-            <div class="line">
-              <dt>currently</dt>
-              <dd>{site.currently}</dd>
-            </div>
-          )
-        }
-      </dl>
-
-      <ul class="links">
-        {
-          site.links.map((l) => {
-            const ext = isExternal(l.href);
-            return (
-              <li>
-                <a href={ext ? l.href : url(l.href)}>
-                  {l.label} <span aria-hidden="true">{ext ? '↗' : '→'}</span>
-                </a>
-              </li>
-            );
-          })
-        }
-      </ul>
-
-      <button class="theme-toggle" type="button" data-theme-toggle data-long="1">
-        switch to dark →
-      </button>
-    </section>
-
     {
       site.photo && (
         <figure class="home-photo">
@@ -58,5 +16,43 @@ const withBase = (html: string) =>
         </figure>
       )
     }
+
+    <div class="home-body">
+      <div class="home-inner">
+        <h1>{site.name}</h1>
+
+        <div class="intro">
+          {
+            site.lines.map((l) => (
+              <p>
+                <span class="label">{l.label}:</span> <Fragment set:html={withBase(l.html)} />
+              </p>
+            ))
+          }
+        </div>
+
+        <ul class="home-nav">
+          {
+            site.links.map((l) => {
+              const ext = isExternal(l.href);
+              return (
+                <li>
+                  <a href={ext ? l.href : url(l.href)}>
+                    {l.label} {ext ? '↗' : '→'}
+                  </a>
+                </li>
+              );
+            })
+          }
+        </ul>
+
+        <div class="home-rule"></div>
+
+        {site.currently && <p class="home-meta">currently: {site.currently}</p>}
+        <button class="text-toggle" type="button" data-theme-toggle data-long="1">
+          switch to dark →
+        </button>
+      </div>
+    </div>
   </main>
 </Base>
