@@ -1,0 +1,92 @@
+---
+import '../styles/global.css';
+import { site, url } from '../data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  bare?: boolean; // home page: no top bar
+}
+
+const { title, description = site.description, bare = false } = Astro.props;
+const pageTitle = title ? `${title} · ${site.title}` : site.title;
+const path = Astro.url.pathname;
+const nav = [
+  { label: 'projects', href: url('projects') },
+  { label: 'resources', href: url('resources') },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={new URL(path, Astro.site)} />
+    <link rel="icon" href={url('favicon.svg')} type="image/svg+xml" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script is:inline>
+      try {
+        const t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+      } catch {}
+    </script>
+  </head>
+  <body>
+    {
+      !bare && (
+        <header class="topbar">
+          <a href={url('')}>← {site.name}</a>
+          <nav aria-label="Main">
+            {nav.map((n) => (
+              <a href={n.href} aria-current={path.startsWith(n.href) ? 'page' : undefined}>
+                {n.label}
+              </a>
+            ))}
+            <button class="theme-toggle" type="button" data-theme-toggle>
+              dark
+            </button>
+          </nav>
+        </header>
+      )
+    }
+    <slot />
+    <script>
+      const root = document.documentElement;
+      const mq = matchMedia('(prefers-color-scheme: dark)');
+      const current = () => root.dataset.theme ?? (mq.matches ? 'dark' : 'light');
+      const buttons = document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]');
+
+      const render = () => {
+        const next = current() === 'dark' ? 'light' : 'dark';
+        buttons.forEach((b) => {
+          b.textContent = b.dataset.long ? `switch to ${next} →` : next;
+          b.setAttribute('aria-label', `Switch to ${next} mode`);
+        });
+      };
+
+      buttons.forEach((b) =>
+        b.addEventListener('click', () => {
+          const next = current() === 'dark' ? 'light' : 'dark';
+          root.dataset.theme = next;
+          try {
+            localStorage.setItem('theme', next);
+          } catch {}
+          render();
+        }),
+      );
+      mq.addEventListener('change', render);
+      render();
+    </script>
+  </body>
+</html>
