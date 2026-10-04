@@ -35,6 +35,7 @@ const fmt = (d: string) => {
               <time datetime={p.date}>{fmt(p.date)}</time>
             </div>
             <p>{p.blurb}</p>
+            {p.note && <p class="project-note" set:html={p.note} />}
             <p class="tags">{p.tags.join(' · ')}</p>
           </li>
         ))

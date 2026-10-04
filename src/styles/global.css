@@ -265,6 +265,7 @@ button { font: inherit; color: inherit; }
   color: var(--faint);
 }
 .project p { margin: 0.4rem 0 0; color: var(--muted); max-width: 38rem; }
+.project .project-note { font-size: 0.9375rem; color: var(--text); }
 .project .tags {
   font-family: var(--font-mono);
   font-size: 0.75rem;

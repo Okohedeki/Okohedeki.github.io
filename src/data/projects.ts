@@ -8,6 +8,7 @@ export type Project = {
   blurb: string;
   url?: string;
   status?: string;
+  note?: string; // HTML, shown under the blurb
   tags: string[];
 };
 
@@ -80,6 +81,9 @@ export const projects: Project[] = [
     name: 'crpg-rle',
     date: '2026-07',
     url: 'https://github.com/Okohedeki/crpg-rle',
+    status: 'paused',
+    note:
+      'Paused: the scale and compute cost are too high for my current setup. I’ll pick it back up after upgrading my local rig. <a href="https://github.com/Okohedeki/crpg-rle#readme">More in the README</a>.',
     blurb:
       'The first act of Tyranny as a reinforcement-learning environment. The agent plays the live game through the same inputs a player uses.',
     tags: ['rl', 'games', 'python'],
