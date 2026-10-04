@@ -36,21 +36,6 @@ const { r } = Astro.props as { r: Resource };
         {r.note && <p class="note" set:html={r.note} />}
       </section>
     </article>
-
-    <aside class="aside" aria-label="More resources">
-      <p class="eyebrow">More resources</p>
-      <ul>
-        {
-          resources.map((o) => (
-            <li>
-              <a href={url(`resources/${o.slug}`)} aria-current={o.slug === r.slug ? 'page' : undefined}>
-                {o.title}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </aside>
   </main>
 
   <script>

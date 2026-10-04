@@ -329,12 +329,7 @@ a.card:hover .arrow { opacity: 1; }
 
 /* resource detail */
 
-.resource {
-  display: grid;
-  grid-template-columns: minmax(0, 46rem) 16rem;
-  justify-content: space-between;
-  gap: 4rem;
-}
+.resource article { max-width: 46rem; }
 
 .prompt {
   border: 1px solid var(--border);
@@ -389,25 +384,6 @@ a.card:hover .arrow { opacity: 1; }
 .detail .note { color: var(--text-3); font-size: 0.9375rem; margin-top: 0.75rem; }
 .detail a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--border-strong); }
 .detail a:hover { text-decoration-color: currentColor; }
-
-.aside { position: sticky; top: 6.5rem; align-self: start; }
-.aside ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.25rem; }
-.aside a {
-  display: block;
-  padding: 0.5rem 0.75rem;
-  margin: 0 -0.75rem;
-  border-radius: 8px;
-  font-size: 0.9375rem;
-  color: var(--text-3);
-  transition: background 0.15s, color 0.15s;
-}
-.aside a:hover { background: var(--hover); color: var(--text); }
-.aside a[aria-current="page"] { color: var(--text); font-weight: 500; background: var(--hover); }
-
-@media (max-width: 1023px) {
-  .resource { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
-  .aside { position: static; }
-}
 
 @media (max-width: 640px) {
   .site-nav { gap: 1rem; }
