@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import { projects } from '../data/projects';
+
+const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+const fmt = (d: string) => {
+  const [y, m] = d.split('-');
+  return `${months[Number(m) - 1]} ${y}`;
+};
+---
+
+<Base title="Projects" description="Side projects by Edeki Okoh: agent tooling, audio and video experiments, and a few games.">
+  <main class="page">
+    <h1>projects</h1>
+    <p class="lede">
+      things i've built outside work: agent tooling, audio and video experiments, a few games. newest first.
+    </p>
+
+    <ol class="project-list">
+      {
+        projects.map((p) => (
+          <li class="project" id={p.id}>
+            <div class="project-head">
+              <h2>
+                {p.url ? (
+                  <a href={p.url}>
+                    {p.name}
+                    <span class="arrow" aria-hidden="true">↗</span>
+                  </a>
+                ) : (
+                  p.name
+                )}
+              </h2>
+              {p.status && <span class="status">{p.status}</span>}
+              <time datetime={p.date}>{fmt(p.date)}</time>
+            </div>
+            <p>{p.blurb}</p>
+            <p class="tags">{p.tags.join(' · ')}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </main>
+</Base>

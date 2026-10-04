@@ -1,0 +1,67 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, url, isExternal } from '../data/site';
+
+// Relative links inside the HTML lines (e.g. "projects#riffborn") need the deploy base.
+const withBase = (html: string) =>
+  html.replace(/href="(?!https?:|mailto:|#|\/)([^"]*)"/g, (_, p: string) => `href="${url(p)}"`);
+---
+
+<Base bare>
+  <main class="home">
+    <section class="home-text">
+      <h1 class="name">{site.name}</h1>
+
+      <dl class="lines">
+        {
+          site.lines.map((l) => (
+            <div class="line">
+              <dt>{l.label}</dt>
+              <dd set:html={withBase(l.html)} />
+            </div>
+          ))
+        }
+        {
+          site.currently && (
+            <div class="line">
+              <dt>currently</dt>
+              <dd>{site.currently}</dd>
+            </div>
+          )
+        }
+      </dl>
+
+      <ul class="links">
+        {
+          site.links.map((l) => {
+            const ext = isExternal(l.href);
+            return (
+              <li>
+                <a href={ext ? l.href : url(l.href)}>
+                  {l.label} <span aria-hidden="true">{ext ? '↗' : '→'}</span>
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+
+      <button class="theme-toggle" type="button" data-theme-toggle data-long="1">
+        switch to dark →
+      </button>
+    </section>
+
+    <figure class="home-photo">
+      {
+        site.photo ? (
+          <img src={url(site.photo)} alt={site.photoAlt} />
+        ) : (
+          <div class="photo-placeholder">
+            <span>your photo</span>
+            <small>public/me.jpg · 3:4</small>
+          </div>
+        )
+      }
+    </figure>
+  </main>
+</Base>
