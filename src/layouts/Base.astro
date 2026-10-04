@@ -5,7 +5,7 @@ import { site, url } from '../data/site';
 interface Props {
   title?: string;
   description?: string;
-  bare?: boolean; // home page: no top bar
+  bare?: boolean; // home page: no header
 }
 
 const { title, description = site.description, bare = false } = Astro.props;
@@ -32,7 +32,7 @@ const nav = [
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
     <script is:inline>
@@ -45,18 +45,29 @@ const nav = [
   <body>
     {
       !bare && (
-        <header class="topbar">
-          <a href={url('')}>← {site.name}</a>
-          <nav aria-label="Main">
-            {nav.map((n) => (
-              <a href={n.href} aria-current={path.startsWith(n.href) ? 'page' : undefined}>
-                {n.label}
-              </a>
-            ))}
-            <button class="theme-toggle" type="button" data-theme-toggle>
-              dark
-            </button>
-          </nav>
+        <header class="site-header">
+          <div class="site-header-inner">
+            <a class="brand" href={url('')}>
+              {site.photo && <img src={url(site.photo)} alt="" />}
+              <span>{site.name}</span>
+            </a>
+            <nav class="site-nav" aria-label="Main">
+              {nav.map((n) => (
+                <a href={n.href} aria-current={path.startsWith(n.href) ? 'page' : undefined}>
+                  {n.label}
+                </a>
+              ))}
+              <button class="icon-toggle" type="button" data-theme-toggle aria-label="Switch theme">
+                <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+                </svg>
+                <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="4" />
+                  <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+                </svg>
+              </button>
+            </nav>
+          </div>
         </header>
       )
     }
@@ -70,8 +81,9 @@ const nav = [
       const render = () => {
         const next = current() === 'dark' ? 'light' : 'dark';
         buttons.forEach((b) => {
-          b.textContent = b.dataset.long ? `switch to ${next} →` : next;
+          b.dataset.next = next;
           b.setAttribute('aria-label', `Switch to ${next} mode`);
+          if (b.dataset.long) b.textContent = `switch to ${next} →`;
         });
       };
 
