@@ -8,7 +8,7 @@ const withBase = (html: string) =>
 ---
 
 <Base bare>
-  <main class="home">
+  <main class:list={['home', { 'no-photo': !site.photo }]}>
     <section class="home-text">
       <h1 class="name">{site.name}</h1>
 
@@ -51,17 +51,12 @@ const withBase = (html: string) =>
       </button>
     </section>
 
-    <figure class="home-photo">
-      {
-        site.photo ? (
+    {
+      site.photo && (
+        <figure class="home-photo">
           <img src={url(site.photo)} alt={site.photoAlt} />
-        ) : (
-          <div class="photo-placeholder">
-            <span>your photo</span>
-            <small>public/me.jpg · 3:4</small>
-          </div>
-        )
-      }
-    </figure>
+        </figure>
+      )
+    }
   </main>
 </Base>

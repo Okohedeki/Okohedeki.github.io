@@ -157,23 +157,8 @@ button { font: inherit; color: inherit; }
   object-position: 50% 25%;
 }
 
-.photo-placeholder {
-  height: 100%;
-  display: grid;
-  place-content: center;
-  gap: 0.25rem;
-  text-align: center;
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  color: var(--faint);
-  border-left: 1px solid var(--rule);
-  background: repeating-linear-gradient(
-    135deg,
-    transparent 0 14px,
-    color-mix(in srgb, var(--rule) 55%, transparent) 14px 15px
-  );
-}
-.photo-placeholder span { color: var(--muted); }
+/* no photo yet: single centered column */
+.home.no-photo { grid-template-columns: minmax(0, 1fr); }
 
 @media (max-width: 860px) {
   .home { grid-template-columns: 1fr; min-height: 0; }
@@ -185,7 +170,6 @@ button { font: inherit; color: inherit; }
     max-height: 56vh;
     width: 100%;
   }
-  .photo-placeholder { border-left: 0; border-bottom: 1px solid var(--rule); }
   .home-text { justify-self: stretch; padding: 2rem 20px 3.5rem; }
   .name { margin-bottom: 1.75rem; }
   .line { grid-template-columns: 1fr; gap: 0.1rem; }

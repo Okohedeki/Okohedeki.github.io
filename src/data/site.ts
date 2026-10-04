@@ -8,7 +8,7 @@ export const site = {
     'Software engineer. Side projects for agents, sound and video, and the ideas you save.',
 
   // Put your photo in /public (e.g. public/me.jpg) and set this to 'me.jpg'.
-  // Empty shows a placeholder.
+  // Empty hides the photo column.
   photo: '',
   photoAlt: 'Edeki Okoh',
 
