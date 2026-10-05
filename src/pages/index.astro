@@ -5,7 +5,6 @@ import { site, url, isExternal } from '../data/site';
 // Relative links inside the HTML lines (e.g. "projects#riffborn") need the deploy base.
 const withBase = (html: string) =>
   html.replace(/href="(?!https?:|mailto:|#|\/)([^"]*)"/g, (_, p: string) => `href="${url(p)}"`);
-const navLinks = site.links.filter((l) => l.label !== 'Email');
 ---
 
 <Base bare>
@@ -15,7 +14,7 @@ const navLinks = site.links.filter((l) => l.label !== 'Email');
         <a class="hero-name" href={url('')}>{site.name}</a>
         <nav class="hero-nav" aria-label="Main">
           {
-            navLinks.map((l) => {
+            site.links.map((l) => {
               const ext = isExternal(l.href);
               return <a href={ext ? l.href : url(l.href)}>{l.label}</a>;
             })

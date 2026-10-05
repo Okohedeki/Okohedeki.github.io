@@ -16,9 +16,8 @@ Needs Node 22.12 or newer. There's no lockfile: this repo's pre-commit hook caps
 
 | To change | Edit |
 | --- | --- |
-| Name, the day/night/off-hours lines, links, photo | `src/data/site.ts` |
+| Name, the by day / by night / by accident lines, links, photo | `src/data/site.ts` |
 | Projects (newest first) | `src/data/projects.ts` |
-| Resources (copy-paste prompts) | `src/data/resources.ts` |
 | Colors, fonts, layout | `src/styles/global.css` |
 
 ## Adding your photo

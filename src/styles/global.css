@@ -305,16 +305,7 @@ button { font: inherit; color: inherit; }
   text-wrap: pretty;
 }
 
-.eyebrow {
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin: 0 0 0.75rem;
-}
-
-/* project + resource cards */
+/* project cards */
 
 .cards { display: grid; gap: 0.5rem; }
 
@@ -349,7 +340,6 @@ a.card:hover h2 { color: var(--text-3); }
 }
 a.card:hover .arrow { opacity: 1; }
 .card p { color: var(--text-3); margin: 0.5rem 0 0; max-width: 48rem; text-wrap: pretty; }
-.card .eyebrow { margin-bottom: 0.5rem; }
 .card h2 a:hover { color: var(--text-3); }
 .card h2 a:hover .arrow { opacity: 1; }
 .card .card-links { margin-top: 0.75rem; }
@@ -374,64 +364,6 @@ a.card:hover .arrow { opacity: 1; }
   font-variant-numeric: tabular-nums;
   color: var(--faint);
 }
-
-/* resource detail */
-
-.resource article { max-width: 46rem; }
-
-.prompt {
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--surface);
-  overflow: hidden;
-  margin: 0 0 3rem;
-}
-.prompt-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.6rem 0.6rem 0.6rem 1rem;
-  border-bottom: 1px solid var(--border);
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--muted);
-}
-.copy-btn {
-  border: 0;
-  border-radius: 8px;
-  background: var(--chip);
-  padding: 0.3rem 0.8rem;
-  cursor: pointer;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  transition: background 0.15s;
-}
-.copy-btn:hover { background: var(--chip-hover); }
-.prompt pre {
-  margin: 0;
-  padding: 1.25rem;
-  max-height: 30rem;
-  overflow: auto;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-  font: 0.8125rem/1.7 var(--font-mono);
-  color: var(--text-2);
-}
-
-.detail { margin: 0 0 2.5rem; }
-.detail h2 {
-  font-size: 1.125rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  margin: 0 0 0.75rem;
-}
-.detail ul { margin: 0; padding-left: 1.2rem; color: var(--text-2); }
-.detail li { margin: 0.35rem 0; }
-.detail p { margin: 0; color: var(--text-2); }
-.detail .note { color: var(--text-3); font-size: 0.9375rem; margin-top: 0.75rem; }
-.detail a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--border-strong); }
-.detail a:hover { text-decoration-color: currentColor; }
 
 @media (max-width: 640px) {
   .site-nav { gap: 1rem; }
