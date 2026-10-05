@@ -36,7 +36,6 @@ export const site = {
 
   links: [
     { label: 'Projects', href: 'projects' },
-    { label: 'Resources', href: 'resources' },
     { label: 'GitHub', href: 'https://github.com/Okohedeki' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/edeki-o-58895bb2/' },
     { label: 'Email', href: 'mailto:okohedeki@gmail.com' },
