@@ -7,11 +7,22 @@ export type Project = {
   date: string; // YYYY-MM
   blurb: string;
   url?: string;
+  demo?: string; // live samples, shown as a second link under the blurb
   status?: string;
   tags: string[];
 };
 
 export const projects: Project[] = [
+  {
+    id: 'scroll-studio',
+    name: 'Scroll Studio',
+    date: '2026-10',
+    url: 'https://github.com/Okohedeki/scroll-studio',
+    demo: 'https://okohedeki.github.io/scroll-studio-showcase/',
+    blurb:
+      'An open-source engine that turns one YAML file into a scroll-driven website: AI film, artwork that paints itself, live 3D, product renders, photo parallax, charts and maps, all built on your own GPU.',
+    tags: ['web', 'ai video', '3d', 'python', 'typescript'],
+  },
   {
     id: 'icarus',
     name: 'Icarus',

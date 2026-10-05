@@ -19,18 +19,20 @@ const fmt = (d: string) => {
     <div class="cards">
       {
         projects.map((p) => {
-          const Tag = p.url ? 'a' : 'div';
+          // A card with live samples has two links, so the card itself isn't one big link.
+          const Tag = p.url && !p.demo ? 'a' : 'div';
           return (
-            <Tag class="card" id={p.id} href={p.url}>
+            <Tag class="card" id={p.id} href={p.demo ? undefined : p.url}>
               <div class="card-head">
                 <h2>
-                  {p.name}
-                  {p.url && <span class="arrow" aria-hidden="true">↗</span>}
+                  {p.demo && p.url ? <a href={p.url}>{p.name}<span class="arrow" aria-hidden="true">↗</span></a> : p.name}
+                  {!p.demo && p.url && <span class="arrow" aria-hidden="true">↗</span>}
                 </h2>
                 {p.status && <span class="status">{p.status}</span>}
                 <time datetime={p.date}>{fmt(p.date)}</time>
               </div>
               <p>{p.blurb}</p>
+              {p.demo && <p class="card-links"><a href={p.demo}>See sample sites ↗</a></p>}
             </Tag>
           );
         })
