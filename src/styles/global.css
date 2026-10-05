@@ -100,6 +100,33 @@ button { font: inherit; color: inherit; }
   object-position: top;
 }
 
+/* Icarus takes the photo's place: a dark stage that stays put while the text scrolls */
+.home-stage {
+  flex: none;
+  width: 58%;
+  height: 100vh;
+  height: 100dvh;
+  position: sticky;
+  top: 0;
+  display: grid;
+  place-items: center;
+  padding: 2.5rem;
+  background: #0c0a09;
+}
+.stage-inner { width: 100%; max-width: 60rem; }
+.stage-frame {
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px #292524;
+}
+.stage-caption {
+  margin: 1rem 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: #a8a29e;
+}
+
 .home-body {
   flex: 1;
   display: flex;
@@ -174,6 +201,7 @@ button { font: inherit; color: inherit; }
 @media (max-width: 1023px) {
   .home { flex-direction: column; }
   .home-photo { position: static; width: 100%; height: 60vh; }
+  .home-stage { position: static; width: 100%; height: auto; padding: 1rem 1rem 1.25rem; }
   .home-body { padding: 3rem 1.5rem 4rem; }
   .home h1 { font-size: 1.875rem; }
 }

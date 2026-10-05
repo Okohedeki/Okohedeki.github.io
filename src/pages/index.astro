@@ -8,14 +8,15 @@ const withBase = (html: string) =>
 ---
 
 <Base bare>
-  <main class:list={['home', { 'no-photo': !site.photo }]}>
-    {
-      site.photo && (
-        <figure class="home-photo">
-          <img src={url(site.photo)} alt={site.photoAlt} />
-        </figure>
-      )
-    }
+  <main class="home has-stage">
+    <section class="home-stage" aria-label="Icarus, a pixel-art animation">
+      <div class="stage-inner">
+        <div class="stage-frame" data-icarus></div>
+        <p class="stage-caption">
+          icarus. five tries, each flight a little longer, then the sun. drawn entirely in code.
+        </p>
+      </div>
+    </section>
 
     <div class="home-body">
       <div class="home-inner">
@@ -55,4 +56,5 @@ const withBase = (html: string) =>
       </div>
     </div>
   </main>
+  <script is:inline src={url('icarus.js')}></script>
 </Base>

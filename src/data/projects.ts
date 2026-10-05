@@ -13,6 +13,14 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    id: 'icarus',
+    name: 'Icarus',
+    date: '2026-10',
+    blurb:
+      'The animation on the home page. He builds wings, flies, falls, changes one thing about the wings and flies a little longer, until he reaches the sun. Every pixel, note and wing design comes from code.',
+    tags: ['pixel art', 'procedural', 'javascript'],
+  },
+  {
     id: 'braindance-studio',
     name: 'Braindance Studio',
     date: '2026-09',
