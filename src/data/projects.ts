@@ -50,15 +50,6 @@ export const projects: Project[] = [
     tags: ['audio', 'react', 'tauri', 'python'],
   },
   {
-    id: 'windows-ai-workstation',
-    name: 'Windows AI Workstation',
-    date: '2026-09',
-    status: 'Developer preview',
-    blurb:
-      'A native Windows interface for document-oriented AI tasks. Review individual actions, inspect output documents, and reopen local task history.',
-    tags: ['agents', 'c#', 'winui 3'],
-  },
-  {
     id: 'fieldnotes',
     name: 'Fieldnotes',
     date: '2026-09',
@@ -66,24 +57,6 @@ export const projects: Project[] = [
     blurb:
       'A local-first workspace for posting consistently, with an inspiration tracker for LinkedIn, X and TikTok.',
     tags: ['writing', 'javascript'],
-  },
-  {
-    id: 'agentaudit',
-    name: 'AgentAudit',
-    date: '2026-07',
-    url: 'https://github.com/Okohedeki/AgentAudit',
-    blurb:
-      'Privacy-safe audits of Codex agent sessions, with a dependency-free Python toolkit for visualizing them.',
-    tags: ['agents', 'evals', 'python'],
-  },
-  {
-    id: 'autotrainer',
-    name: 'AutoTrainer',
-    date: '2026-07',
-    url: 'https://github.com/Okohedeki/AutoTrainer',
-    blurb:
-      'Train and verify specialized 9B frontend models with QLoRA and reinforcement learning on one consumer GPU.',
-    tags: ['ml', 'rl', 'python'],
   },
   {
     id: 'rig',
@@ -105,54 +78,11 @@ export const projects: Project[] = [
     tags: ['rl', 'games', 'python'],
   },
   {
-    id: 'markov',
-    name: 'Markov',
-    date: '2026-06',
-    blurb:
-      'A bookmark app that remembers what you forgot. Save sources and notes, search your archive, and resurface old ideas with a reason to revisit them.',
-    tags: ['knowledge', 'python', 'ios'],
-  },
-  {
-    id: 'airlock',
-    name: 'Airlock',
-    date: '2026-05',
-    url: 'https://github.com/Okohedeki/airlock',
-    blurb:
-      'Run agents on your own computer and call them through your own HTTPS relay, with access controls, remote approvals and execution records.',
-    tags: ['agents', 'typescript', 'python'],
-  },
-  {
-    id: 'dotclaude',
-    name: 'dotclaude',
-    date: '2026-05',
-    url: 'https://github.com/Okohedeki/dotclaude',
-    blurb:
-      'My Claude Code setup in one repo: settings, skills, plan review and memory. One script on a fresh macOS or Windows machine and you’re back.',
-    tags: ['claude code', 'tooling'],
-  },
-  {
-    id: 'agentsentinel',
-    name: 'AgentSentinel',
-    date: '2026-04',
-    url: 'https://github.com/Okohedeki/AgentSentinel',
-    blurb: 'Automated quality recovery for AI coding agents.',
-    tags: ['agents', 'quality'],
-  },
-  {
     id: 'claude-vitals',
     name: 'claude-vitals',
     date: '2026-04',
     blurb:
       'Is your coding agent getting worse? Reads your Claude Code session logs, tracks 20 quality metrics, flags regressions, and prescribes the config changes that fix them.',
     tags: ['claude code', 'quality', 'typescript'],
-  },
-  {
-    id: 'riffborn',
-    name: 'Riffborn',
-    date: '2026-03',
-    status: 'WIP',
-    blurb:
-      'A Roblox rhythm-combat game where your weapon is a guitar. Hit notes on the beat to land attacks.',
-    tags: ['games', 'roblox', 'luau'],
   },
 ];
