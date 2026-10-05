@@ -106,7 +106,7 @@ button { font: inherit; color: inherit; }
   min-height: 100vh;
   min-height: 100dvh;
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto 1fr;
   background: #0c0a09;
   color: #f5f5f4;
 }
@@ -124,25 +124,17 @@ button { font: inherit; color: inherit; }
 .hero-stage {
   display: grid;
   place-items: center;
-  padding: 0 1.5rem;
+  padding: 0 1.5rem 1.5rem;
   min-height: 0;
 }
 .hero-frame {
-  /* as large as fits: full width, or the height left after the bar and caption */
-  width: min(100%, calc((100vh - 8.5rem) * 16 / 9));
-  width: min(100%, calc((100dvh - 8.5rem) * 16 / 9));
+  /* as large as fits: full width, or the height left after the bar */
+  width: min(100%, calc((100vh - 6rem) * 16 / 9));
+  width: min(100%, calc((100dvh - 6rem) * 16 / 9));
   border-radius: 6px;
   overflow: hidden;
   box-shadow: 0 0 0 1px #292524, 0 30px 80px -20px rgba(0, 0, 0, 0.8);
 }
-.hero-caption {
-  margin: 0;
-  padding: 1rem 1.5rem 1.5rem;
-  text-align: center;
-  font-size: 0.8125rem;
-  color: #78716c;
-}
-
 .about { padding: 5rem 1.5rem 6rem; }
 .about-inner { max-width: 40rem; margin: 0 auto; }
 
