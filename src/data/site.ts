@@ -1,8 +1,8 @@
 // Everything on the home page lives here.
-// Lines are HTML so you can drop links in; keep them lowercase and short.
+// Lines are HTML so you can drop links in; keep them short.
 
 export const site = {
-  name: 'edeki okoh',
+  name: 'Edeki Okoh',
   title: 'Edeki Okoh',
   description:
     'Software engineer. Side projects for agents, sound and video, and the ideas you save.',
@@ -14,20 +14,20 @@ export const site = {
 
   lines: [
     {
-      label: 'by day',
-      html: 'software engineer, working on financial-services software.',
+      label: 'By day',
+      html: 'Software engineer, working on financial-services software.',
     },
     {
-      label: 'by night',
+      label: 'By night',
       html:
-        'building side projects: <a href="https://github.com/Okohedeki/airlock">agents you run from your own machine</a>, ' +
+        'Building side projects: <a href="https://github.com/Okohedeki/airlock">agents you run from your own machine</a>, ' +
         '<a href="https://github.com/Okohedeki/braindance-studio">tools for sound and video</a>, ' +
         'and <a href="projects#riffborn">a game where your weapon is a guitar</a>.',
     },
     {
-      label: 'by accident',
+      label: 'By accident',
       html:
-        'crpgs. sometimes i <a href="https://github.com/Okohedeki/crpg-rle">teach an rl agent to play one</a>.',
+        'CRPGs. Sometimes I <a href="https://github.com/Okohedeki/crpg-rle">teach an RL agent to play one</a>.',
     },
   ],
 
@@ -35,11 +35,11 @@ export const site = {
   currently: '',
 
   links: [
-    { label: 'projects', href: 'projects' },
-    { label: 'resources', href: 'resources' },
-    { label: 'github', href: 'https://github.com/Okohedeki' },
-    { label: 'linkedin', href: 'https://www.linkedin.com/in/edeki-o-58895bb2/' },
-    { label: 'email', href: 'mailto:okohedeki@gmail.com' },
+    { label: 'Projects', href: 'projects' },
+    { label: 'Resources', href: 'resources' },
+    { label: 'GitHub', href: 'https://github.com/Okohedeki' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/edeki-o-58895bb2/' },
+    { label: 'Email', href: 'mailto:okohedeki@gmail.com' },
   ],
 };
 

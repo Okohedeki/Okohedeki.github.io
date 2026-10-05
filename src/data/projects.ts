@@ -33,7 +33,7 @@ export const projects: Project[] = [
     id: 'resonance-studio',
     name: 'Resonance Studio',
     date: '2026-09',
-    status: 'prototype',
+    status: 'Prototype',
     blurb:
       'Find the speakers in a recording, listen to one voice alongside the video, and export each one as its own track. A local desktop app.',
     tags: ['audio', 'react', 'tauri', 'python'],
@@ -42,7 +42,7 @@ export const projects: Project[] = [
     id: 'windows-ai-workstation',
     name: 'Windows AI Workstation',
     date: '2026-09',
-    status: 'developer preview',
+    status: 'Developer preview',
     blurb:
       'A native Windows interface for document-oriented AI tasks. Review individual actions, inspect output documents, and reopen local task history.',
     tags: ['agents', 'c#', 'winui 3'],
@@ -88,7 +88,7 @@ export const projects: Project[] = [
     name: 'crpg-rle',
     date: '2026-07',
     url: 'https://github.com/Okohedeki/crpg-rle',
-    status: 'in progress',
+    status: 'In progress',
     blurb:
       'The first act of Tyranny as a reinforcement-learning environment. The agent plays the live game through the same inputs a player uses.',
     tags: ['rl', 'games', 'python'],
@@ -139,7 +139,7 @@ export const projects: Project[] = [
     id: 'riffborn',
     name: 'Riffborn',
     date: '2026-03',
-    status: 'wip',
+    status: 'WIP',
     blurb:
       'A Roblox rhythm-combat game where your weapon is a guitar. Hit notes on the beat to land attacks.',
     tags: ['games', 'roblox', 'luau'],

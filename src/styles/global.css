@@ -100,32 +100,51 @@ button { font: inherit; color: inherit; }
   object-position: top;
 }
 
-/* Icarus takes the photo's place: a dark stage that stays put while the text scrolls */
-.home-stage {
-  flex: none;
-  width: 58%;
-  height: 100vh;
-  height: 100dvh;
-  position: sticky;
-  top: 0;
+/* ---------- landing: Icarus fills the first screen ---------- */
+
+.hero {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  background: #0c0a09;
+  color: #f5f5f4;
+}
+.hero-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+}
+.hero-name { font-weight: 600; letter-spacing: -0.02em; white-space: nowrap; }
+.hero-nav { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; font-size: 0.875rem; }
+.hero-nav a { color: #a8a29e; transition: color 0.15s; }
+.hero-nav a:hover { color: #f5f5f4; }
+.hero-stage {
   display: grid;
   place-items: center;
-  padding: 2.5rem;
-  background: #0c0a09;
+  padding: 0 1.5rem;
+  min-height: 0;
 }
-.stage-inner { width: 100%; max-width: 60rem; }
-.stage-frame {
+.hero-frame {
+  /* as large as fits: full width, or the height left after the bar and caption */
+  width: min(100%, calc((100vh - 8.5rem) * 16 / 9));
+  width: min(100%, calc((100dvh - 8.5rem) * 16 / 9));
   border-radius: 6px;
   overflow: hidden;
-  box-shadow: 0 0 0 1px #292524;
+  box-shadow: 0 0 0 1px #292524, 0 30px 80px -20px rgba(0, 0, 0, 0.8);
 }
-.stage-caption {
-  margin: 1rem 0 0;
-  font-family: var(--font-mono);
+.hero-caption {
+  margin: 0;
+  padding: 1rem 1.5rem 1.5rem;
+  text-align: center;
   font-size: 0.8125rem;
-  line-height: 1.6;
-  color: #a8a29e;
+  color: #78716c;
 }
+
+.about { padding: 5rem 1.5rem 6rem; }
+.about-inner { max-width: 40rem; margin: 0 auto; }
 
 .home-body {
   flex: 1;
@@ -201,7 +220,11 @@ button { font: inherit; color: inherit; }
 @media (max-width: 1023px) {
   .home { flex-direction: column; }
   .home-photo { position: static; width: 100%; height: 60vh; }
-  .home-stage { position: static; width: 100%; height: auto; padding: 1rem 1rem 1.25rem; }
+  .hero { min-height: auto; }
+  .hero-bar { padding: 1rem; }
+  .hero-nav { gap: 0.5rem 1rem; }
+  .hero-stage { padding: 0.5rem 0.75rem 0; }
+  .about { padding: 3rem 1.5rem 4rem; }
   .home-body { padding: 3rem 1.5rem 4rem; }
   .home h1 { font-size: 1.875rem; }
 }

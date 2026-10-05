@@ -12,8 +12,8 @@ const { title, description = site.description, bare = false } = Astro.props;
 const pageTitle = title ? `${title} · ${site.title}` : site.title;
 const path = Astro.url.pathname;
 const nav = [
-  { label: 'projects', href: url('projects') },
-  { label: 'resources', href: url('resources') },
+  { label: 'Projects', href: url('projects') },
+  { label: 'Resources', href: url('resources') },
 ];
 ---
 
@@ -83,7 +83,7 @@ const nav = [
         buttons.forEach((b) => {
           b.dataset.next = next;
           b.setAttribute('aria-label', `Switch to ${next} mode`);
-          if (b.dataset.long) b.textContent = `switch to ${next} →`;
+          if (b.dataset.long) b.textContent = `Switch to ${next} mode →`;
         });
       };
 

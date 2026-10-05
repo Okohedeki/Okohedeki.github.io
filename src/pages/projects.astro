@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import { projects } from '../data/projects';
 
-const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const fmt = (d: string) => {
   const [y, m] = d.split('-');
   return `${months[Number(m) - 1]} ${y}`;
@@ -11,9 +11,9 @@ const fmt = (d: string) => {
 
 <Base title="Projects" description="Side projects by Edeki Okoh: agent tooling, audio and video experiments, and a few games.">
   <main class="page">
-    <h1>projects</h1>
+    <h1>Projects</h1>
     <p class="lede">
-      things i've built outside work: agent tooling, audio and video experiments, a few games. newest first.
+      Things I've built outside work: agent tooling, audio and video experiments, a few games. Newest first.
     </p>
 
     <div class="cards">

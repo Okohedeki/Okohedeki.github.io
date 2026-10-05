@@ -5,23 +5,33 @@ import { site, url, isExternal } from '../data/site';
 // Relative links inside the HTML lines (e.g. "projects#riffborn") need the deploy base.
 const withBase = (html: string) =>
   html.replace(/href="(?!https?:|mailto:|#|\/)([^"]*)"/g, (_, p: string) => `href="${url(p)}"`);
+const navLinks = site.links.filter((l) => l.label !== 'Email');
 ---
 
 <Base bare>
-  <main class="home has-stage">
-    <section class="home-stage" aria-label="Icarus, a pixel-art animation">
-      <div class="stage-inner">
-        <div class="stage-frame" data-icarus></div>
-        <p class="stage-caption">
-          icarus. five tries, each flight a little longer, then the sun. drawn entirely in code.
-        </p>
+  <main class="landing">
+    <section class="hero" aria-label="Icarus, a pixel-art animation">
+      <header class="hero-bar">
+        <a class="hero-name" href={url('')}>{site.name}</a>
+        <nav class="hero-nav" aria-label="Main">
+          {
+            navLinks.map((l) => {
+              const ext = isExternal(l.href);
+              return <a href={ext ? l.href : url(l.href)}>{l.label}</a>;
+            })
+          }
+        </nav>
+      </header>
+
+      <div class="hero-stage">
+        <div class="hero-frame" data-icarus></div>
       </div>
+
+      <p class="hero-caption">Icarus. Drawn entirely in code.</p>
     </section>
 
-    <div class="home-body">
-      <div class="home-inner">
-        <h1>{site.name}</h1>
-
+    <section class="about">
+      <div class="about-inner">
         <div class="intro">
           {
             site.lines.map((l) => (
@@ -49,12 +59,12 @@ const withBase = (html: string) =>
 
         <div class="home-rule"></div>
 
-        {site.currently && <p class="home-meta">currently: {site.currently}</p>}
+        {site.currently && <p class="home-meta">Currently: {site.currently}</p>}
         <button class="text-toggle" type="button" data-theme-toggle data-long="1">
-          switch to dark →
+          Switch to dark mode →
         </button>
       </div>
-    </div>
+    </section>
   </main>
   <script is:inline src={url('icarus.js')}></script>
 </Base>
