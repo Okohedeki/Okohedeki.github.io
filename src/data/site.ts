@@ -19,15 +19,12 @@ export const site = {
     },
     {
       label: 'By night',
-      html:
-        'Building side projects: <a href="https://github.com/Okohedeki/airlock">agents you run from your own machine</a>, ' +
-        '<a href="https://github.com/Okohedeki/braindance-studio">tools for sound and video</a>, ' +
-        'and <a href="projects#riffborn">a game where your weapon is a guitar</a>.',
+      html: 'Side projects.',
     },
     {
       label: 'By accident',
       html:
-        'CRPGs. Sometimes I <a href="https://github.com/Okohedeki/crpg-rle">teach an RL agent to play one</a>.',
+        'CRPGs. Sometimes I <a href="https://github.com/Okohedeki/crpg-rle">teach my agent to play one</a>.',
     },
   ],
 
