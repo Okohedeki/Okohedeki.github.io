@@ -1,0 +1,3 @@
+# Authorized ad sellers for apps published by Edeki Okoh (IAB app-ads.txt).
+# Add the AdMob line below once the publisher ID exists, replacing the placeholder:
+# google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
